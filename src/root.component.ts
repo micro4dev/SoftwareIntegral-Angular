@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgxSpinnerTextService } from '@app/shared/ngx-spinner-text.service';
 
 @Component({

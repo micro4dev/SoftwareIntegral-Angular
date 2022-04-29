@@ -1,4 +1,4 @@
-﻿import { PlatformLocation, registerLocaleData } from '@angular/common';
+import { PlatformLocation, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, DEFAULT_CURRENCY_CODE, Injector, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
