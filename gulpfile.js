@@ -1,4 +1,4 @@
-﻿var gulp = require('gulp');
+var gulp = require('gulp');
 var path = require('path');
 var merge = require('merge-stream');
 var globby = require('globby');
