@@ -1,0 +1,174 @@
+﻿<div
+    bsModal
+    #createOrEditModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="createOrEditModal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" #tarifaForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="tarifa.id">{{ l('EditTarifa') }}</span>
+                        <span *ngIf="!tarifa.id">{{ l('CreateNewTarifa') }}</span>
+                    </h4>
+
+                    <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group m-form__group">
+                        <label for="TipoVehiculoNombre">{{ l('TipoVehiculo') }}</label>
+                        <select
+                            name="tarifa.tipoVehiculoId"
+                            [(ngModel)]="tarifa.tipoVehiculoId"
+                            class="form-control"
+                            required
+                        >
+                            <option value="">{{ l('SelectATipoVehiculo') }}</option>
+                            <option *ngFor="let item of allTipoVehiculos" value="{{ item.id }}">
+                                {{ item.displayName }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_HoraInicialDia">{{ l('HoraInicialDia') }} *</label>
+                        <input
+                            type="text"
+                            #Tarifa_HoraInicialDia="ngModel"
+                            id="Tarifa_HoraInicialDia"
+                            class="form-control"
+                            [(ngModel)]="tarifa.horaInicialDia"
+                            name="HoraInicialDia"
+                            minlength="5"
+                            maxlength="5"
+                            required
+                        />
+                        <validation-messages [formCtrl]="Tarifa_HoraInicialDia"></validation-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_HoraFinalDia">{{ l('HoraFinalDia') }} *</label>
+                        <input
+                            type="text"
+                            #Tarifa_HoraFinalDia="ngModel"
+                            id="Tarifa_HoraFinalDia"
+                            class="form-control"
+                            [(ngModel)]="tarifa.horaFinalDia"
+                            name="HoraFinalDia"
+                            minlength="5"
+                            maxlength="5"
+                            required
+                        />
+                        <validation-messages [formCtrl]="Tarifa_HoraFinalDia"></validation-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_PrecioHoraFraccion">{{ l('PrecioHoraFraccion') }}</label>
+                        <input
+                            type="number"
+                            #Tarifa_PrecioHoraFraccion="ngModel"
+                            id="Tarifa_PrecioHoraFraccion"
+                            class="form-control"
+                            [(ngModel)]="tarifa.precioHoraFraccion"
+                            name="PrecioHoraFraccion"
+                        />
+                        <validation-messages [formCtrl]="Tarifa_PrecioHoraFraccion"></validation-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_PrecioDia">{{ l('PrecioDia') }}</label>
+                        <input
+                            type="number"
+                            #Tarifa_PrecioDia="ngModel"
+                            id="Tarifa_PrecioDia"
+                            class="form-control"
+                            [(ngModel)]="tarifa.precioDia"
+                            name="PrecioDia"
+                        />
+                        <validation-messages [formCtrl]="Tarifa_PrecioDia"></validation-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_HoraInicialNoche">{{ l('HoraInicialNoche') }} *</label>
+                        <input
+                            type="text"
+                            #Tarifa_HoraInicialNoche="ngModel"
+                            id="Tarifa_HoraInicialNoche"
+                            class="form-control"
+                            [(ngModel)]="tarifa.horaInicialNoche"
+                            name="HoraInicialNoche"
+                            minlength="5"
+                            maxlength="5"
+                            required
+                        />
+                        <validation-messages [formCtrl]="Tarifa_HoraInicialNoche"></validation-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_HoraFinalNoche">{{ l('HoraFinalNoche') }} *</label>
+                        <input
+                            type="text"
+                            #Tarifa_HoraFinalNoche="ngModel"
+                            id="Tarifa_HoraFinalNoche"
+                            class="form-control"
+                            [(ngModel)]="tarifa.horaFinalNoche"
+                            name="HoraFinalNoche"
+                            minlength="5"
+                            maxlength="5"
+                            required
+                        />
+                        <validation-messages [formCtrl]="Tarifa_HoraFinalNoche"></validation-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_MultaNoche">{{ l('MultaNoche') }}</label>
+                        <input
+                            type="number"
+                            #Tarifa_MultaNoche="ngModel"
+                            id="Tarifa_MultaNoche"
+                            class="form-control"
+                            [(ngModel)]="tarifa.multaNoche"
+                            name="MultaNoche"
+                        />
+                        <validation-messages [formCtrl]="Tarifa_MultaNoche"></validation-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Tarifa_MinutosTolerancia">{{ l('MinutosTolerancia') }}</label>
+                        <input
+                            type="number"
+                            #Tarifa_MinutosTolerancia="ngModel"
+                            id="Tarifa_MinutosTolerancia"
+                            class="form-control"
+                            [(ngModel)]="tarifa.minutosTolerancia"
+                            name="MinutosTolerancia"
+                        />
+                        <validation-messages [formCtrl]="Tarifa_MinutosTolerancia"></validation-messages>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">
+                        {{ l('Cancel') }}
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary blue"
+                        [disabled]="!tarifaForm.form.valid"
+                        [buttonBusy]="saving"
+                        [busyText]="l('SavingWithThreeDot')"
+                    >
+                        <i class="fa fa-save"></i>
+                        <span>{{ l('Save') }}</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

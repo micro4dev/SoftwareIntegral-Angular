@@ -22,7 +22,11 @@ export class AppNavigationService {
             ),
             new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
-            new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
+           
+            new AppMenuItem('TipoVehiculos', 'Pages.TipoVehiculos', 'flaticon-more', '/app/main/playa/tipoVehiculos'),
+            
+            new AppMenuItem('Tarifas', 'Pages.Tarifas', 'flaticon-more', '/app/main/playa/tarifas'),
+             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
             new AppMenuItem(
                 'Administration',
                 '',

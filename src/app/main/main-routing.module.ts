@@ -7,6 +7,20 @@ import { RouterModule } from '@angular/router';
             {
                 path: '',
                 children: [
+                    
+                    {
+                        path: 'playa/tarifas',
+                        loadChildren: () => import('./playa/tarifas/tarifa.module').then(m => m.TarifaModule),
+                        data: { permission: 'Pages.Tarifas' }
+                    },
+                
+                    
+                    {
+                        path: 'playa/tipoVehiculos',
+                        loadChildren: () => import('./playa/tipoVehiculos/tipoVehiculo.module').then(m => m.TipoVehiculoModule),
+                        data: { permission: 'Pages.TipoVehiculos' }
+                    },
+                
                     {
                         path: 'dashboard',
                         loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
